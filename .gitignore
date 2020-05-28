@@ -1,5 +1,4 @@
 *.pyc
-vendor/
 test.py
 _old/
 test-*

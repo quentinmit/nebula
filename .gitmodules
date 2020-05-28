@@ -1,0 +1,24 @@
+[submodule "vendor/unidecode"]
+	path = vendor/unidecode
+	url = https://github.com/martastain/unidecode
+[submodule "vendor/cherryadmin"]
+	path = vendor/cherryadmin
+	url = https://github.com/martastain/cherryadmin
+[submodule "vendor/nxtools"]
+	path = vendor/nxtools
+	url = https://github.com/immstudios/nxtools
+[submodule "vendor/nebula-core"]
+	path = vendor/nebula-core
+	url = https://github.com/immstudios/nebula-core
+[submodule "vendor/themis2"]
+	path = vendor/themis2
+	url = https://github.com/immstudios/themis2
+[submodule "vendor/python-osc"]
+	path = vendor/python-osc
+	url = https://github.com/immstudios/python-osc
+[submodule "vendor/casparcg-infoparser"]
+	path = vendor/casparcg-infoparser
+	url = https://github.com/martastain/casparcg-infoparser
+[submodule "vendor/nebula-hub"]
+	path = vendor/nebula-hub
+	url = https://github.com/immstudios/nebula-hub
