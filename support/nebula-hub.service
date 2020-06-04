@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=root
+User=nebula
 WorkingDirectory=/opt/nebula
 ExecStart=/opt/nebula/manage.py run hub --daemon
 Restart=on-failure
