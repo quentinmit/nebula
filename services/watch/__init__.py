@@ -79,6 +79,8 @@ class Service(BaseService):
 
                 asset.load_sidecar_metadata()
 
+                logging.debug("Running %d post scripts" % (len(wf_settings.findall("post"))))
+
                 failed=False
                 for post_script in wf_settings.findall("post"):
                     try:
