@@ -1,14 +1,17 @@
 import os
 import imp
+import importlib
 
 from nebula import *
 
 class Service(BaseService):
     def on_init(self):
-        self.exec_init = False
         self.exec_main = False
         self.plugin = False
 
+        if "module" in self.settings.attrib:
+            module = self.settings.attrib["module"]
+            result = self.load_from_module(module)
         if "script" in self.settings.attrib:
             fname = self.settings.attrib["script"]
             result = self.load_from_script(fname)
@@ -19,6 +22,12 @@ class Service(BaseService):
             logging.error("Unable to load worker. Shutting down")
             self.shutdown(no_restart=True)
 
+
+    def load_from_module(self, name):
+        module = importlib.import_module(name)
+        self.plugin = module.Plugin(self)
+        self.plugin.on_init()
+        return True
 
     def load_from_script(self, fname):
         if not fname.lower().endswith(".py"):
@@ -49,16 +58,15 @@ class Service(BaseService):
 
     def load_from_settings(self):
         try:
-            self.exec_init = self.settings.find("init").text
+            exec_init = self.settings.find("init").text
         except:
             pass
+        else:
+            exec (exec_init)
         try:
             self.exec_main = self.settings.find("main").text
         except:
             pass
-
-        if self.exec_init:
-            exec (self.exec_init)
 
         return True
 
