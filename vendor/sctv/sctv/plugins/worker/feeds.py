@@ -63,6 +63,8 @@ class Plugin(WorkerPlugin):
                 asset["date"] = time.mktime(pubDate)
                 asset["source"] = url
                 asset["source/url"] = href
+                if length:
+                    asset["file/size"] = length
                 for meta in feed.findall("meta"):
                     asset[meta.attrib["name"]] = meta.attrib["value"]
                 asset.save(set_mtime=False)
